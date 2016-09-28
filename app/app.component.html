@@ -1,0 +1,10 @@
+<div (click)="$event.preventDefault()">
+<tabset>
+<tab *ngFor="let tabz of tabs"
+    [heading]="tabz.title"
+     (select)="tabz.active = true"
+     (select)="tabz.active = true">
+</tab>
+</tabset>
+</div>
+  <router-outlet></router-outlet>
