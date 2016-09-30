@@ -1,16 +1,26 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserListComponent } from './user/user.list.component';
+import { UserListComponent } from './user.list/user.list.component';
+import { UserModificationComponent } from './user.modification/user.modification.component';
 
 const appRoutes: Routes = [
-  {
-    path: '',
-    component: UserListComponent
-  }
+    {
+        path: '',
+        redirectTo: '/userList',
+        pathMatch: 'full'
+    },
+    {
+        path: 'userList',
+        component: UserListComponent
+    },
+    {
+        path: 'userModi',
+        component: UserModificationComponent
+    }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot( appRoutes );
 
 
 /*

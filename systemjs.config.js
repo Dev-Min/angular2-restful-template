@@ -1,8 +1,7 @@
 /**
- * PLUNKER VERSION
- * (based on systemjs.config.js in angular.io)
- * System configuration for Angular samples
- * Adjust as necessary for your application needs.
+ * PLUNKER VERSION (based on systemjs.config.js in angular.io) System
+ * configuration for Angular samples Adjust as necessary for your application
+ * needs.
  */
 (function (global) {
   System.config({
@@ -41,10 +40,12 @@
       'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
       'ts':                         'npm:plugin-typescript@4.0.10/lib/plugin.js',
       'typescript':                 'npm:typescript@2.0.2/lib/typescript.js',
-      'ng2-bootstrap':              'npm:ng2-bootstrap',
-      'moment':                     'npm:moment'
+      'ng2-bootstrap':              'node_modules/ng2-bootstrap',
+      'moment':                     'node_modules/moment',
+      'primeng':					'node_modules/primeng'
     },
-    // packages tells the System loader how to load when no filename and/or no extension
+    // packages tells the System loader how to load when no filename and/or no
+	// extension
     packages: {
       app: {
         main: './main.ts',
@@ -62,14 +63,17 @@
       },
       'moment': {
         defaultExtension: 'js'
-      }
+      },
+      'primeng': {
+          defaultExtension: 'js'
+        }
     }
   });
 })(this);
 
 
 /*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/
+ * Copyright 2016 Google Inc. All Rights Reserved. Use of this source code is
+ * governed by an MIT-style license that can be found in the LICENSE file at
+ * http://angular.io/license
+ */

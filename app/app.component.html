@@ -1,10 +1,7 @@
 <div (click)="$event.preventDefault()">
-<tabset>
-<tab *ngFor="let tabz of tabs"
-    [heading]="tabz.title"
-     (select)="tabz.active = true"
-     (select)="tabz.active = true">
-</tab>
-</tabset>
 </div>
-  <router-outlet></router-outlet>
+<div>
+	<a routerLink="/userList" routerLinkActive="active">User List</a>
+	<a routerLink="/userModi" routerLinkActive="active">User Modification</a>
+</div>
+<router-outlet></router-outlet>
