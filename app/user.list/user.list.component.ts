@@ -7,13 +7,8 @@ import { Content }                    from './content'
 
 @Component({
   selector: 'user-list',
-
-  template: `
-  <h1>{{userTitle}}</h1>
-  <li *ngFor="let cont of content">
-    {{cont.name}}, {{cont.email}}, {{cont.password}}, {{cont.dept.deptNameType}}
-  </li>
-  `
+  templateUrl: 'app/user.list/user.list.component.html',
+  styleUrls: [ 'app/user.list/user.list.component.css' ]
 })
 export class UserListComponent implements OnInit{
   userTitle = 'User List';
@@ -26,7 +21,7 @@ export class UserListComponent implements OnInit{
   constructor(private http: Http, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getusers().subscribe(
+    this.userService.getusers().then(
       data => this.content = data
     );
   }

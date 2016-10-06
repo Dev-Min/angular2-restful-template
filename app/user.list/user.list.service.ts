@@ -2,20 +2,23 @@ import { Injectable }    from '@angular/core';
 import { Headers, Response, Http } from '@angular/http';
 import { Observable }                 from 'rxjs/Observable';
 
+import 'rxjs/add/operator/toPromise';
+
 import { Content }                    from './content'
 
 @Injectable()
 export class UserService {
-  private userUrl = 'http://192.168.0.11:8080/mat/v1.0/users';  // URL to web api
+    private userUrl = 'http://192.168.0.11:8080/mat/v1.0/users';  // URL to web api
 
-  private content: Content;
+    private content: Content;
 
-  constructor(private http: Http) { }
+    constructor( private http: Http ) { }
 
-  getusers(): Observable<any> {
-    return this.http.get(this.userUrl)
-      .map(response => response.json().content);
-  }
+    getusers(): Promise<any> {
+        return this.http.get( this.userUrl )
+            .toPromise()
+            .then( response => response.json().content );
+    }
 }
 
 /*
