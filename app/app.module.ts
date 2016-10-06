@@ -7,10 +7,10 @@ import { HttpModule, Http, Headers }    from '@angular/http';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
-import { UserService }          from './user.list/user.list.service';
 import { UserListComponent }    from './user.list/user.list.component';
+import { UserCreateComponent } from './user.create/user.create.component';
 import { UserModificationComponent } from './user.modification/user.modification.component';
-import { UserModificationService } from './user.modification/user.modification.service';
+import { UserService } from './user.service/user.service';
 
 @NgModule( {
     imports: [
@@ -23,9 +23,10 @@ import { UserModificationService } from './user.modification/user.modification.s
         AppComponent,
         UserListComponent,
         UserModificationComponent,
+        UserCreateComponent
     ],
     providers: [
-        UserService, UserModificationService
+        UserService
     ],
     
     bootstrap: [AppComponent]

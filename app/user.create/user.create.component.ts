@@ -6,22 +6,22 @@ import { Headers, Http }              from '@angular/http';
 import { Location }               from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { UserModificationService } from './user.create.service';
+import { UserService } from '../user.service/user.service';
 import { User } from '../user.model/user';
 import { Dept } from '../user.model/dept';
 
 @Component( {
     selector: 'user-modification',
     templateUrl: 'app/user.create/user.create.component.html',
-    providers: [UserModificationService]
+    providers: [UserService]
 })
 
-export class UserModificationComponent {
-    userTitle = "User Modification";
+export class UserCreateComponent {
+    userTitle = "User Create";
     user: User = new User;
 
     constructor(
-        private service: UserModificationService,
+        private service: UserService,
         private location: Location
     ) { }
 

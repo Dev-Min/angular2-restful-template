@@ -2,6 +2,7 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UserListComponent } from './user.list/user.list.component';
+import { UserCreateComponent } from './user.create/user.create.component';
 import { UserModificationComponent } from './user.modification/user.modification.component';
 
 const appRoutes: Routes = [
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
     },
     {
         path: 'userModi',
+        component: UserCreateComponent
+    },
+    {
+        path: 'detail/:id',
         component: UserModificationComponent
     }
 ];

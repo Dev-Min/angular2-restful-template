@@ -1,9 +1,10 @@
 import { Component, OnInit }          from '@angular/core';
 import { Headers, Http }              from '@angular/http';
 import { Observable }                 from 'rxjs/Observable';
+import { Router }            from '@angular/router';
 
-import { UserService }                from './user.list.service'
-import { Content }                    from './content'
+import { UserService }                from '../user.service/user.service';
+import { User }                    from '../user.model/user';
 
 @Component({
   selector: 'user-list',
@@ -12,19 +13,20 @@ import { Content }                    from './content'
 })
 export class UserListComponent implements OnInit{
   userTitle = 'User List';
+  public users: User[] = [];
 
-  //private headers = new Headers({'Content-Type': 'application/json'});
-  private userUrl = 'http://localhost:8080/mat/v1.0/users';  // URL to web api
-
-  public content: Content;
-
-  constructor(private http: Http, private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getusers().then(
-      data => this.content = data
+      data => this.users = data
     );
   }
+  
+  gotoDetail(user: User): void {
+      let link = ['/detail', user.id];
+      this.router.navigate(link);
+    }
 }
 
 
