@@ -6,8 +6,6 @@ import { Content }                    from './content'
 
 @Injectable()
 export class UserService {
-
-  private headers = new Headers({'Content-Type': 'application/json'});
   private userUrl = 'http://192.168.0.11:8080/mat/v1.0/users';  // URL to web api
 
   private content: Content;

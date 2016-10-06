@@ -3,7 +3,7 @@ import './rxjs-extensions';
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule }    from '@angular/http';
+import { HttpModule, Http, Headers }    from '@angular/http';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
@@ -22,11 +22,12 @@ import { UserModificationService } from './user.modification/user.modification.s
     declarations: [
         AppComponent,
         UserListComponent,
-        UserModificationComponent
+        UserModificationComponent,
     ],
     providers: [
         UserService, UserModificationService
     ],
+    
     bootstrap: [AppComponent]
 })
 export class AppModule {
