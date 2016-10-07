@@ -1,24 +1,14 @@
 <h1>{{userTitle}}</h1>
-    <div>
-        E-Mail : <input [(ngModel)]="user.email" placeholder="E-Mail"><br>
-        Password : <input [(ngModel)]="user.password" placeholder="Password"><br>
-        Name : <input [(ngModel)]="user.name" placeholder="name"><br>
-        Age : <input [(ngModel)]="user.age" placeholder="Age"><br>
-        DEPT :
-        <select [(ngModel)]="selectDept" (ngModelChange)="onChangeDropdown($event)">
-          <option *ngFor="let dept of depts" [ngValue]="dept">{{dept.value}}</option>
-        </select>
-    </div>
-    <div>
-        user.email : {{user.email}}<br>
-        user.password : {{user.password}}<br>
-        user.name : {{user.name}}<br>
-        user.age : {{user.age}}<br>
-        user.activeType : {{user.activeType}}<br>
-        user.dept.deptId : {{user.dept.deptId}}<br>
-        user.dept.deptNameType : {{user.dept.deptNameType}}<br>
-        user.createdDate : {{user.createdDate}}<br>
-    </div>
-    <div>
-        <button (click)="onCreateUser()">Create User</button>
-    </div>
+<div>
+	E-Mail : <input [(ngModel)]="user.email" placeholder="E-Mail"><br>
+	Password : <input [(ngModel)]="user.password" placeholder="Password"><br>
+	Name : <input [(ngModel)]="user.name" placeholder="name"><br>
+	Age : <input [(ngModel)]="user.age" placeholder="Age"><br>
+	DEPT : <select [(ngModel)]="selectDept"
+		(ngModelChange)="onChangeDropdown($event)">
+		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.value}}</option>
+	</select>
+</div>
+<div>
+	<button (click)="onCreateUser()">Create User</button>
+</div>

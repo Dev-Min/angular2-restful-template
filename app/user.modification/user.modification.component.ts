@@ -18,6 +18,8 @@ import { Dept } from '../user.model/dept';
 })
 
 export class UserModificationComponent implements OnInit {
+    depts = [{'id': '1', 'value': 'ARCH'}, {'id': '2', 'value': 'CODER'}, {'id': '3', 'value': 'QA'}];
+    selectDept: Dept;
     userTitle = "User Modification";
     user: User = new User;
 
@@ -34,6 +36,8 @@ export class UserModificationComponent implements OnInit {
           this.service.getUser(id)
             .then(user => this.user = user);
         });
+        
+        this.selectDept = this.user.dept;
       }
     
     onUpdateUser(): void {
@@ -47,5 +51,10 @@ export class UserModificationComponent implements OnInit {
     goBack(): void {
         let link = ['/userList'];
         this.router.navigate(link);
+    }
+    
+    onChangeDropdown(dept: any) {
+        this.user.dept.deptId = dept.id;
+        this.user.dept.deptNameType = dept.value;
     }
 }
