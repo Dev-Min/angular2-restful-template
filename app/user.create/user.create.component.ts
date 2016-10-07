@@ -18,6 +18,8 @@ import { Dept } from '../user.model/dept';
 })
 
 export class UserCreateComponent {
+    depts = [{'id': '1', 'value': 'ARCH'}, {'id': '2', 'value': 'CODER'}, {'id': '3', 'value': 'QA'}];
+    selectDept = this.depts[1];
     userTitle = "User Create";
     user: User = new User;
 
@@ -35,5 +37,10 @@ export class UserCreateComponent {
     goBack(): void {
         let link = ['/userList'];
         this.router.navigate(link);
+    }
+    
+    onChangeDropdown(dept: any) {
+        this.user.dept.deptId = dept.id;
+        this.user.dept.deptNameType = dept.value;
     }
 }

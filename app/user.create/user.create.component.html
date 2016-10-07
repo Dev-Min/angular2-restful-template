@@ -5,10 +5,8 @@
         Name : <input [(ngModel)]="user.name" placeholder="name"><br>
         Age : <input [(ngModel)]="user.age" placeholder="Age"><br>
         DEPT :
-        <select>
-          <option value="1">ARCH</option>
-          <option value="2">CODER</option>
-          <option value="3">QA</option>
+        <select [(ngModel)]="selectDept" (ngModelChange)="onChangeDropdown($event)">
+          <option *ngFor="let dept of depts" [ngValue]="dept">{{dept.value}}</option>
         </select>
     </div>
     <div>
