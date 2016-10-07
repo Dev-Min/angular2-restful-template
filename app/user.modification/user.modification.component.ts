@@ -4,7 +4,7 @@
 import { Component, OnInit }          from '@angular/core';
 import { Headers, Http }              from '@angular/http';
 import { Location }               from '@angular/common';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { UserService } from '../user.service/user.service';
 import { User } from '../user.model/user';
@@ -24,7 +24,8 @@ export class UserModificationComponent implements OnInit {
     constructor(
         private service: UserService,
         private location: Location,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) { }
     
     ngOnInit(): void {
@@ -40,10 +41,11 @@ export class UserModificationComponent implements OnInit {
     }
     
     onDeleteUser(): void {
-        this.service.delete(this.user.id);
+        this.service.delete(this.user).then(() => this.goBack());
     }
     
     goBack(): void {
-        this.location.back();
-      }
+        let link = ['/userList'];
+        this.router.navigate(link);
+    }
 }

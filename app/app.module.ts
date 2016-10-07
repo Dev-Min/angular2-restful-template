@@ -11,6 +11,7 @@ import { UserListComponent }    from './user.list/user.list.component';
 import { UserCreateComponent } from './user.create/user.create.component';
 import { UserModificationComponent } from './user.modification/user.modification.component';
 import { UserService } from './user.service/user.service';
+import { ActivePipe }   from './user.list/active.pipe';
 
 @NgModule( {
     imports: [
@@ -23,7 +24,8 @@ import { UserService } from './user.service/user.service';
         AppComponent,
         UserListComponent,
         UserModificationComponent,
-        UserCreateComponent
+        UserCreateComponent,
+        ActivePipe
     ],
     providers: [
         UserService

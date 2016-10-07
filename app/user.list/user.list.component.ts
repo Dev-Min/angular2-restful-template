@@ -5,11 +5,12 @@ import { Router }            from '@angular/router';
 
 import { UserService }                from '../user.service/user.service';
 import { User }                    from '../user.model/user';
+import { ActivePipe }   from './active.pipe';
 
 @Component({
   selector: 'user-list',
   templateUrl: 'app/user.list/user.list.component.html',
-  styleUrls: [ 'app/user.list/user.list.component.css' ]
+  styleUrls: [ 'app/user.list/user.list.component.css' ],
 })
 export class UserListComponent implements OnInit{
   userTitle = 'User List';

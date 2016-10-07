@@ -39,7 +39,7 @@ export class UserService {
           .catch(this.handleError);
       }
     
-    delete(id: number): Promise<void> {
+    delete(user: User): Promise<void> {
         const url = `${this.userUrl}/${user.id}`;
         return this.http.delete(url, {headers: this.headers})
           .toPromise()

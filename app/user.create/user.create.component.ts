@@ -5,6 +5,7 @@ import { Component, OnInit }          from '@angular/core';
 import { Headers, Http }              from '@angular/http';
 import { Location }               from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Router }            from '@angular/router';
 
 import { UserService } from '../user.service/user.service';
 import { User } from '../user.model/user';
@@ -22,7 +23,8 @@ export class UserCreateComponent {
 
     constructor(
         private service: UserService,
-        private location: Location
+        private location: Location,
+        private router: Router
     ) { }
 
     onCreateUser(): void {
@@ -31,6 +33,7 @@ export class UserCreateComponent {
     }
 
     goBack(): void {
-        this.location.back();
+        let link = ['/userList'];
+        this.router.navigate(link);
     }
 }
