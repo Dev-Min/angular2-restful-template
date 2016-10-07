@@ -4,9 +4,9 @@
 	Password : <input [(ngModel)]="user.password" placeholder="Password"><br>
 	Name : <input [(ngModel)]="user.name" placeholder="name"><br>
 	Age : <input [(ngModel)]="user.age" placeholder="Age"><br>
-	DEPT : <select [(ngModel)]="selectDept"
-		(ngModelChange)="onChangeDropdown($event)">
-		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.value}}</option>
+	DEPT :
+	<select [(ngModel)]="selectDept" (ngModelChange)="onChangeDropdown($event)">
+		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.deptNameType}}</option>
 	</select>
 </div>
 <div>

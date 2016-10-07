@@ -17,9 +17,9 @@ import { Dept } from '../user.model/dept';
     providers: [UserService]
 })
 
-export class UserCreateComponent {
-    depts = [{'id': '1', 'value': 'ARCH'}, {'id': '2', 'value': 'CODER'}, {'id': '3', 'value': 'QA'}];
-    selectDept = this.depts[1];
+export class UserCreateComponent implements OnInit{
+    depts: Dept[] = [];
+    selectDept: Dept = new Dept;
     userTitle = "User Create";
     user: User = new User;
 
@@ -28,6 +28,12 @@ export class UserCreateComponent {
         private location: Location,
         private router: Router
     ) { }
+    
+    ngOnInit(): void {
+        this.depts = this.service.getDepts();
+        this.selectDept = this.depts[0];
+        this.user.dept = this.selectDept;
+    }
 
     onCreateUser(): void {
         this.service.create( this.user ).subscribe();
@@ -39,8 +45,8 @@ export class UserCreateComponent {
         this.router.navigate(link);
     }
     
-    onChangeDropdown(dept: any) {
-        this.user.dept.deptId = dept.id;
-        this.user.dept.deptNameType = dept.value;
+    onChangeDropdown(dept: Dept) {
+        this.user.dept.deptId = dept.deptId;
+        this.user.dept.deptNameType = dept.deptNameType;
     }
 }

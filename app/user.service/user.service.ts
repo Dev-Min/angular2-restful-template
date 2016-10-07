@@ -7,6 +7,8 @@ import 'rxjs/add/operator/toPromise';
 import { Observable }                 from 'rxjs/Observable';
 
 import { User } from '../user.model/user';
+import { Dept } from '../user.model/dept';
+import { Depts } from '../user.model/dept.dropdown';
 
 @Injectable()
 export class UserService {
@@ -51,4 +53,8 @@ export class UserService {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
       }
+    
+    getDepts(): Dept[] {
+            return Depts;
+    }
 }

@@ -1,12 +1,12 @@
 <h1>{{userTitle}}</h1>
 <div>
-	E-Mail : <input [(ngModel)]="user.email"><br>
-	Password : <input [(ngModel)]="user.password"><br>
-	Name : <input [(ngModel)]="user.name"><br>
-	Age : <input [(ngModel)]="user.age"><br>
+	E-Mail : <input [(ngModel)]="user.email" placeholder="E-Mail"><br>
+	Password : <input [(ngModel)]="user.password" placeholder="Password"><br>
+	Name : <input [(ngModel)]="user.name" placeholder="name"><br>
+	Age : <input [(ngModel)]="user.age" placeholder="Age"><br>
 	DEPT :
 	<select [(ngModel)]="selectDept" (ngModelChange)="onChangeDropdown($event)">
-		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.value}}</option>
+		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.deptNameType}}</option>
 	</select>
 </div>
 <div>
