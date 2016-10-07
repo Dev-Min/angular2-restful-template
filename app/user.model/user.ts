@@ -11,5 +11,5 @@ export class User {
     age: number;
     activeType = "Y";
     dept: Dept = new Dept;
-    createdDate = "2016-10-06";
+    createdDate = "yyyy-MM-dd";
 }
