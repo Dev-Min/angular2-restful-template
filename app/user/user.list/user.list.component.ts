@@ -9,8 +9,8 @@ import { ActivePipe }   from './active.pipe';
 
 @Component({
   selector: 'user-list',
-  templateUrl: 'app/user.list/user.list.component.html',
-  styleUrls: [ 'app/user.list/user.list.component.css' ],
+  templateUrl: 'app/user/user.list/user.list.component.html',
+  styleUrls: [ 'app/user/user.list/user.list.component.css' ],
 })
 export class UserListComponent implements OnInit{
   userTitle = 'User List';

@@ -13,7 +13,7 @@ import { Dept } from '../user.model/dept';
 
 @Component( {
     selector: 'user-modification',
-    templateUrl: 'app/user.create/user.create.component.html',
+    templateUrl: 'app/user/user.create/user.create.component.html',
     providers: [UserService]
 })
 
@@ -36,8 +36,7 @@ export class UserCreateComponent implements OnInit{
     }
 
     onCreateUser(): void {
-        this.service.create( this.user ).subscribe();
-        this.goBack();
+        this.service.create( this.user ).subscribe( user => this.goBack() );
     }
 
     goBack(): void {
