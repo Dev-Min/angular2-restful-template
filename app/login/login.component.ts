@@ -2,6 +2,7 @@
 * http://usejsdoc.org/
 */
 import {Component} from '@angular/core';
+import { Router }            from '@angular/router';
 
 @Component({
 selector: 'my-app',
@@ -13,7 +14,10 @@ template: `
 `,
 })
 export class LoginComponent {
+    constructor(private router: Router) { }
+    
     onLogin() {
-        
+        let link = ['/userList'];
+        this.router.navigate(link);
     }
 }
