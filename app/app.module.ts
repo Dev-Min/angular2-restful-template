@@ -4,8 +4,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, Http, Headers }    from '@angular/http';
-import {InputTextModule} from 'primeng/primeng';
-import {ButtonModule} from 'primeng/primeng';
+import { InputTextModule, ButtonModule, DataGridModule, PanelModule } from 'primeng/primeng';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
@@ -23,7 +22,9 @@ import { LoginComponent } from './login/login.component';
         HttpModule,
         routing,
         InputTextModule,
-        ButtonModule
+        ButtonModule,
+        DataGridModule,
+        PanelModule
     ],
     declarations: [
         AppComponent,

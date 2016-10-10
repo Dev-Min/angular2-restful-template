@@ -1,3 +1,4 @@
+<!-- 
 <h1>{{userTitle}}</h1>
 <div class="grid grid-pad">
 	<div *ngFor="let user of users | activePipe" (click)="gotoDetail(user)" class="col-1-4">
@@ -6,3 +7,17 @@
 		</div>
 	</div>
 </div>
+-->
+
+<p-dataGrid [value]="users" [paginator]="true" [rows]="3">
+	<header>User List</header>
+    <template let-user>
+    	<div style="padding:3px" class="ui-g-12 ui-md-3">
+    		<p-panel header="user.name" [paginator]="true" [style]="{'text-align':'center'}">
+                <div class="car-detail">{{user.email}}</div>
+                <hr class="ui-widget-content" style="border-top:0">
+                <i class="fa fa-search" (click)="selectCar(car)" style="cursor:pointer"></i>
+            </p-panel>
+    	</div>
+    </template>
+</p-dataGrid>
