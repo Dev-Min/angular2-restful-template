@@ -37,7 +37,6 @@ import { LoginComponent } from './login/login.component';
     providers: [
         UserService
     ],
-    
     bootstrap: [AppComponent]
 })
 export class AppModule {
