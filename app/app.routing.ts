@@ -1,15 +1,20 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserListComponent } from './user.list/user.list.component';
-import { UserCreateComponent } from './user.create/user.create.component';
-import { UserModificationComponent } from './user.modification/user.modification.component';
+import { UserListComponent } from './user/user.list/user.list.component';
+import { UserCreateComponent } from './user/user.create/user.create.component';
+import { UserModificationComponent } from './user/user.modification/user.modification.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/userList',
+        redirectTo: '/login',
         pathMatch: 'full'
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'userList',
