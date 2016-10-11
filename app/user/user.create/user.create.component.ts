@@ -6,7 +6,7 @@ import { Headers, Http }              from '@angular/http';
 import { Location }               from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router }            from '@angular/router';
-import { SelectItem } from 'primeng/primeng';
+import { SelectItem, Message } from 'primeng/primeng';
 
 import { UserService } from '../user.service/user.service';
 import { User } from '../user.model/user';
@@ -19,6 +19,7 @@ import { Dept } from '../user.model/dept';
 })
 
 export class UserCreateComponent implements OnInit{
+    msgs: Message[] = [];
     items: SelectItem[] = [];
 //    selectItem: SelectItem;
     depts: Dept[] = [];
@@ -38,11 +39,28 @@ export class UserCreateComponent implements OnInit{
             this.items.push({label: dept.deptNameType, value: {deptId: dept.deptId, deptNameType: dept.deptNameType}});
         }
 //        this.selectItem = this.items[0];
-//        this.user.dept = this.selectItem.value;
+        this.user.dept = this.items[0].value;
     }
 
     onCreateUser(): void {
-        this.service.create( this.user ).subscribe( user => this.goBack() );
+        if(this.user.email == null) {
+            this.showError("E-Mail을");
+        }
+        else if(this.user.password == null) {
+            this.showError("Password를");
+        }
+        else if(this.user.name == null) {
+            this.showError("Name을");
+        }
+        else if(this.user.age == null) {
+            this.showError("Age를");
+        }
+        else if(this.user.dept.deptNameType == null) {
+            this.showError("DEPT를");
+        }
+        else {
+            this.service.create( this.user ).subscribe( user => this.goBack() );
+        }
     }
 
     goBack(): void {
@@ -54,5 +72,14 @@ export class UserCreateComponent implements OnInit{
 //        this.user.dept.deptId = dept.value.deptId;
 //        this.user.dept.deptNameType = dept.value.deptNameType;
         this.user.dept = this.items[dept.value.deptId - 1].value;
+    }
+    
+    showError(title: string) {
+        this.msgs = [];
+        this.msgs.push({severity:'error', summary:title + ' 입력해주세요!', detail:'Validation failed'});
+    }
+
+    hide() {
+        this.msgs = [];
     }
 }
