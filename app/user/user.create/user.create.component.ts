@@ -70,8 +70,6 @@ export class UserCreateComponent implements OnInit{
     }
     
     onChangeDropdown(dept: SelectItem) {
-//        this.user.dept.deptId = dept.value.deptId;
-//        this.user.dept.deptNameType = dept.value.deptNameType;
         this.user.dept = this.items[dept.value.deptId - 1].value;
     }
     
@@ -86,7 +84,7 @@ export class UserCreateComponent implements OnInit{
     
     showInfo() {
         this.msgs = [];
-        this.msgs.push({severity:'success', summary:'회원 추가 성공', detail:'PrimeNG rocks'});
+        this.msgs.push({severity:'submitted', summary:'회원 추가 성공', detail:'PrimeNG rocks'});
     }
 
 }
