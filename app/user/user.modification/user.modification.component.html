@@ -5,7 +5,7 @@
 	Name : <input type="text" pInputText [(ngModel)]="user.name" placeholder="name"><br>
 	Age : <input type="text" pInputText [(ngModel)]="user.age" placeholder="Age"><br>
 	DEPT :
-	<p-dropdown [options]="items" [(ngModel)]="selectItem" (onChange)="onChangeDropdown(selectItem)"></p-dropdown>
+	<p-dropdown [options]="items" [(ngModel)]="selectItem" (onChange)="onChangeDropdown($event)"></p-dropdown>
 	<!-- 
 	<select [(ngModel)]="selectDept" (ngModelChange)="onChangeDropdown($event)">
 		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.deptNameType}}</option>

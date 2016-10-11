@@ -21,7 +21,6 @@ import { Dept } from '../user.model/dept';
 export class UserModificationComponent implements OnInit {
     depts: Dept[] = [];
     items: SelectItem[] = [];
-    selectItem: SelectItem;
     userTitle = "User Modification";
     user: User = new User;
 
@@ -30,21 +29,22 @@ export class UserModificationComponent implements OnInit {
         private location: Location,
         private route: ActivatedRoute,
         private router: Router
-    ) { }
+    ) {
+        this.depts = this.service.getDepts();
+    }
 
     ngOnInit(): void {
-        this.depts = this.service.getDepts();
         this.route.params.forEach(( params: Params ) => {
             let id = +params['id'];
             this.service.getUser( id )
                 .then( user => {
                     this.user = user;
                     this.depts = this.service.getDepts();
+                    this.items.push({ label: this.user.dept.deptNameType, value: this.user.dept });
                     for ( let dept of this.depts ) {
                         this.items.push( { label: dept.deptNameType, value: { deptId: dept.deptId, deptNameType: dept.deptNameType } });
+//                        this.user.dept = this.items[user.dept.deptId - 1].value;
                     }
-                    this.selectItem = this.items[user.dept.deptId - 1];
-                    this.user.dept = this.depts[user.dept.deptId - 1];
                 });
         });
     }
@@ -62,8 +62,9 @@ export class UserModificationComponent implements OnInit {
         this.router.navigate( link );
     }
 
-    onChangeDropdown(selectItem: any) {
-        this.user.dept.deptId = selectItem.value.deptId;
-        this.user.dept.deptNameType = selectItem.value.deptNameType;
-    }
+    onChangeDropdown(dept: SelectItem) {
+//      this.user.dept.deptId = dept.value.deptId;
+//      this.user.dept.deptNameType = dept.value.deptNameType;
+      this.user.dept = this.items[dept.value.deptId - 1].value;
+  }
 }
