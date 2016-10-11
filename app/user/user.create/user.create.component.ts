@@ -59,6 +59,7 @@ export class UserCreateComponent implements OnInit{
             this.showError("DEPT를");
         }
         else {
+            this.showInfo();
             this.service.create( this.user ).subscribe( user => this.goBack() );
         }
     }
@@ -82,4 +83,10 @@ export class UserCreateComponent implements OnInit{
     hide() {
         this.msgs = [];
     }
+    
+    showInfo() {
+        this.msgs = [];
+        this.msgs.push({severity:'success', summary:'회원 추가 성공', detail:'PrimeNG rocks'});
+    }
+
 }
