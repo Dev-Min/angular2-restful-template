@@ -1,4 +1,5 @@
 <h1>My First PrimeNG App</h1>
-<input type="text" pInputText />
-<input type="password" pInputText />
+<input type="text" pInputText [(ngModel)]="userId"/>
+<input type="password" pPassword [(ngModel)]="userPw"/>
 <button pButton type="button" label="Login" (click)="onLogin()"></button>
+<p-growl [value]="msgs"></p-growl>
