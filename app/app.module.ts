@@ -4,7 +4,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, Http, Headers }    from '@angular/http';
-import { InputTextModule, ButtonModule, DataGridModule, PanelModule, TabMenuModule, PasswordModule, DropdownModule, GrowlModule } from 'primeng/primeng';
+import { InputTextModule, ButtonModule, DataGridModule, PanelModule, TabMenuModule, PasswordModule, DropdownModule, GrowlModule, EditorModule, SharedModule } from 'primeng/primeng';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
@@ -14,6 +14,7 @@ import { UserModificationComponent } from './user/user.modification/user.modific
 import { UserService } from './user/user.service/user.service';
 import { ActivePipe }   from './user/user.list/active.pipe';
 import { LoginComponent } from './login/login.component';
+import { NgEditorComponent } from './editor/editor.component';
 
 @NgModule( {
     imports: [
@@ -28,7 +29,9 @@ import { LoginComponent } from './login/login.component';
         TabMenuModule,
         PasswordModule,
         DropdownModule,
-        GrowlModule
+        GrowlModule,
+        EditorModule,
+        SharedModule
     ],
     declarations: [
         AppComponent,
@@ -36,7 +39,8 @@ import { LoginComponent } from './login/login.component';
         UserModificationComponent,
         UserCreateComponent,
         ActivePipe,
-        LoginComponent
+        LoginComponent,
+        NgEditorComponent
     ],
     providers: [
         UserService

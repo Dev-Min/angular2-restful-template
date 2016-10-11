@@ -44,6 +44,7 @@
 					'ng2-bootstrap' : 'node_modules/ng2-bootstrap',
 					'moment' : 'node_modules/moment',
 					'primeng' : 'node_modules/primeng',
+					"quill" : "node_modules/quill"
 				},
 				// packages tells the System loader how to load when no filename
 				// and/or no
@@ -67,6 +68,9 @@
 						defaultExtension : 'js'
 					},
 					'primeng' : {
+						defaultExtension : 'js'
+					},
+					'quill' : {
 						defaultExtension : 'js'
 					}
 				}

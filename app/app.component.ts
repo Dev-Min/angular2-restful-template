@@ -15,7 +15,8 @@ export class AppComponent implements OnInit {
         this.items = [
             { label: 'Login', icon: 'fa-bar-chart', routerLink: ['/login'] },
             { label: 'User List', icon: 'fa-calendar', routerLink: ['/userList'] },
-            { label: 'User Create', icon: 'fa-twitter', routerLink: ['/userCreate'] }
+            { label: 'User Create', icon: 'fa-twitter', routerLink: ['/userCreate'] },
+            { label: 'Editor', icon: 'fa-twitter', routerLink: ['/editor'] }
         ];
     }
 }

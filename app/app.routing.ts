@@ -5,6 +5,7 @@ import { UserListComponent } from './user/user.list/user.list.component';
 import { UserCreateComponent } from './user/user.create/user.create.component';
 import { UserModificationComponent } from './user/user.modification/user.modification.component';
 import { LoginComponent } from './login/login.component';
+import { NgEditorComponent } from './editor/editor.component';
 
 const appRoutes: Routes = [
     {
@@ -27,7 +28,11 @@ const appRoutes: Routes = [
     {
         path: 'detail/:id',
         component: UserModificationComponent
-    }
+    },
+    {
+        path: 'editor',
+        component: NgEditorComponent
+    },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot( appRoutes );
