@@ -1,16 +1,19 @@
 <h1>{{userTitle}}</h1>
 <div>
-	E-Mail : <input [(ngModel)]="user.email" placeholder="E-Mail"><br>
-	Password : <input [(ngModel)]="user.password" placeholder="Password"><br>
-	Name : <input [(ngModel)]="user.name" placeholder="name"><br>
-	Age : <input [(ngModel)]="user.age" placeholder="Age"><br>
+	E-Mail : <input type="text" pInputText [(ngModel)]="user.email" placeholder="E-Mail"/><br>
+	Password : <input type="password" pPassword [(ngModel)]="user.password" placeholder="Password" /> <br>
+	Name : <input type="text" pInputText [(ngModel)]="user.name" placeholder="name"><br>
+	Age : <input type="text" pInputText [(ngModel)]="user.age" placeholder="Age"><br>
 	DEPT :
+	<p-dropdown [options]="items" [(ngModel)]="selectItem" (onChange)="onChangeDropdown(selectItem)"></p-dropdown>
+	<!-- 
 	<select [(ngModel)]="selectDept" (ngModelChange)="onChangeDropdown($event)">
 		<option *ngFor="let dept of depts" [ngValue]="dept">{{dept.deptNameType}}</option>
 	</select>
+	-->
 </div>
 <div>
-	<button (click)="onUpdateUser()">Modify User</button>
-	<button (click)="onDeleteUser(); $event.stopPropagation()">Delete User</button>
-	<button (click)="goBack()">Back</button>
+	<button pButton type="button" label="Modify User" (click)="onUpdateUser()"></button>
+	<button pButton type="button" label="Delete User" (click)="onDeleteUser(); $event.stopPropagation()"></button>
+	<button pButton type="button" label="Back" (click)="goBack()"></button>
 </div>

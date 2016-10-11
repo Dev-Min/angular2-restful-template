@@ -6,6 +6,7 @@ import { Headers, Http }              from '@angular/http';
 import { Location }               from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router }            from '@angular/router';
+import { SelectItem } from 'primeng/primeng';
 
 import { UserService } from '../user.service/user.service';
 import { User } from '../user.model/user';
@@ -18,8 +19,8 @@ import { Dept } from '../user.model/dept';
 })
 
 export class UserCreateComponent implements OnInit{
+    items: SelectItem[] = [];
     depts: Dept[] = [];
-    selectDept: Dept = new Dept;
     userTitle = "User Create";
     user: User = new User;
 
@@ -31,8 +32,10 @@ export class UserCreateComponent implements OnInit{
     
     ngOnInit(): void {
         this.depts = this.service.getDepts();
-        this.selectDept = this.depts[0];
-        this.user.dept = this.selectDept;
+        for(let dept of this.depts) {
+            this.items.push({label: dept.deptNameType, value: {deptId: dept.deptId, deptNameType: dept.deptNameType}});
+        }
+        this.user.dept = this.depts[0];
     }
 
     onCreateUser(): void {
@@ -44,7 +47,7 @@ export class UserCreateComponent implements OnInit{
         this.router.navigate(link);
     }
     
-    onChangeDropdown(dept: Dept) {
+    onChangeDropdown(dept: any) {
         this.user.dept.deptId = dept.deptId;
         this.user.dept.deptNameType = dept.deptNameType;
     }

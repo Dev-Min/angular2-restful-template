@@ -21,7 +21,7 @@ const appRoutes: Routes = [
         component: UserListComponent
     },
     {
-        path: 'userModi',
+        path: 'userCreate',
         component: UserCreateComponent
     },
     {

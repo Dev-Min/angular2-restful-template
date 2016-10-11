@@ -4,7 +4,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, Http, Headers }    from '@angular/http';
-import { InputTextModule, ButtonModule, DataGridModule, PanelModule } from 'primeng/primeng';
+import { InputTextModule, ButtonModule, DataGridModule, PanelModule, TabMenuModule, PasswordModule, DropdownModule } from 'primeng/primeng';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
@@ -24,7 +24,10 @@ import { LoginComponent } from './login/login.component';
         InputTextModule,
         ButtonModule,
         DataGridModule,
-        PanelModule
+        PanelModule,
+        TabMenuModule,
+        PasswordModule,
+        DropdownModule
     ],
     declarations: [
         AppComponent,
