@@ -6,12 +6,7 @@ import { Router }            from '@angular/router';
 
 @Component({
 selector: 'my-app',
-template: `
-    <h1>My First PrimeNG App</h1>
-    <input type="text" pInputText/>
-    <input type="password" pInputText/>
-    <button pButton type="button" label="Login" (click)="onLogin()"></button>
-`,
+templateUrl: 'app/login/login.component.html'
 })
 export class LoginComponent {
     constructor(private router: Router) { }
