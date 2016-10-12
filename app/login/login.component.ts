@@ -3,7 +3,7 @@
 */
 import {Component} from '@angular/core';
 import { Router }            from '@angular/router';
-import { Message, ControlGroup } from 'primeng/primeng';
+import { Message } from 'primeng/primeng';
 
 @Component({
 selector: 'my-app',
