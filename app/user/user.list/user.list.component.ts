@@ -2,11 +2,12 @@ import { Component, OnInit }          from '@angular/core';
 import { Headers, Http }              from '@angular/http';
 import { Observable }                 from 'rxjs/Observable';
 import { Router }            from '@angular/router';
-import { Message, ConfirmationService } from 'primeng/primeng';
+import { Message, ConfirmationService, SelectItem } from 'primeng/primeng';
 
 import { UserService }                from '../user.service/user.service';
 import { User }                    from '../user.model/user';
 import { ActivePipe }   from './active.pipe';
+import { Dept } from '../user.model/dept';
 
 @Component( {
     selector: 'user-list',
@@ -19,12 +20,14 @@ export class UserListComponent implements OnInit {
     dataSource: User[] = [];
     users: User[] = [];
     cols: any[];
-    user: User;
+    user: User = new User;
     totalRecords: number;
     selectedUser: User;
     displayDialog: boolean;
     newUser: boolean;
     msgs: Message[] = [];
+    depts: Dept[] = [];
+    items: SelectItem[] = [];
 
     constructor( private userService: UserService,
         private router: Router,
@@ -32,6 +35,12 @@ export class UserListComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this.depts = this.userService.getDepts();
+        this.items.push( { label: this.user.dept.deptNameType, value: this.user.dept });
+        for ( let dept of this.depts ) {
+            this.items.push( { label: dept.deptNameType, value: { deptId: dept.deptId, deptNameType: dept.deptNameType } });
+        }
+        
         this.userService.getusers().then( data => {
             this.dataSource = data;
             this.totalRecords = this.dataSource.length;
@@ -49,10 +58,9 @@ export class UserListComponent implements OnInit {
             //            { field: 'info', header: 'Info' }
         ];
     }
-
-    gotoDetail( user: User ): void {
-        let link = ['/detail', user.id];
-        this.router.navigate( link );
+    
+    onChangeDropdown( dept: SelectItem ) {
+        this.user.dept = this.items[dept.value.deptId - 1].value;
     }
 
     onRowSelect( event: any ) {
