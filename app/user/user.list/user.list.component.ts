@@ -17,6 +17,7 @@ import { Dept } from '../user.model/dept';
 export class UserListComponent implements OnInit {
     userTitle = 'User List';
     filterStr = 'Y';
+    detailTitle: string;
     dataSource: User[] = [];
     users: User[] = [];
     cols: any[];
@@ -29,17 +30,18 @@ export class UserListComponent implements OnInit {
     depts: Dept[] = [];
     items: SelectItem[] = [];
 
-    constructor( private userService: UserService,
+    constructor(
+        private userService: UserService,
         private router: Router,
         private confirmationService: ConfirmationService
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.depts = this.userService.getDepts();
         for ( let dept of this.depts ) {
             this.items.push( { label: dept.deptNameType, value: { deptId: dept.deptId, deptNameType: dept.deptNameType } });
         }
-        
+
         this.userService.getusers().then( data => {
             this.dataSource = data;
             this.totalRecords = this.dataSource.length;
@@ -57,12 +59,13 @@ export class UserListComponent implements OnInit {
             //            { field: 'info', header: 'Info' }
         ];
     }
-    
+
     onChangeDropdown( dept: SelectItem ) {
         this.user.dept = this.items[dept.value.deptId - 1].value;
     }
 
     onRowSelect( event: any ) {
+        this.detailTitle = 'User Detail';
         this.newUser = false;
         this.user = this.cloneUser( event.data );
         this.displayDialog = true;
@@ -80,7 +83,28 @@ export class UserListComponent implements OnInit {
 
     onSaveUser(): void {
         if ( this.newUser ) {
-
+            if ( this.user.email == null ) {
+                this.showError( "E-Mail을" );
+            }
+            else if ( this.user.password == null ) {
+                this.showError( "Password를" );
+            }
+            else if ( this.user.name == null ) {
+                this.showError( "Name을" );
+            }
+            else if ( this.user.age == null ) {
+                this.showError( "Age를" );
+            }
+            else if ( this.user.dept.deptNameType == null ) {
+                this.showError( "DEPT를" );
+            }
+            else {
+                this.userService.create( this.user ).subscribe( user => {
+                    this.users.push( this.user );
+                    this.user = null;
+                    this.displayDialog = false;
+                });
+            }
         }
         else {
             if ( this.user.email == '' ) {
@@ -100,6 +124,7 @@ export class UserListComponent implements OnInit {
             }
             else {
                 this.userService.update( this.user ).then(() => {
+                    this.users[this.findSelectedCarIndex()] = this.user;
                     this.user = null;
                     this.displayDialog = false;
                 });
@@ -109,13 +134,13 @@ export class UserListComponent implements OnInit {
 
     onDeleteUser(): void {
         this.confirmationService.confirm( {
-            message: 'Are you sure that you want to delete user?',
+            header: '선택한 회원정보를 삭제합니다.',
+            message: '회원정보 삭제를 원하시면 Yes를 선택해 주세요.',
             accept: () => {
-                //Actual logic to perform a confirmation
+                this.displayDialog = false;
                 this.userService.delete( this.user ).then(() => {
                     this.users.splice( this.findSelectedCarIndex(), 1 );
                     this.user = null;
-                    this.displayDialog = false;
                 });
             }
         });
@@ -135,6 +160,7 @@ export class UserListComponent implements OnInit {
     }
 
     showDialogToAdd() {
+        this.detailTitle = 'User Create';
         this.newUser = true;
         this.user = new User();
         this.displayDialog = true;
