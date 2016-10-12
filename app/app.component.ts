@@ -9,8 +9,8 @@ import { MenuItem } from 'primeng/primeng';
 export class AppComponent implements OnInit {
     title = 'RestFul Tutorial';
 
-    private items: MenuItem[];
-
+    items: MenuItem[];
+    
     ngOnInit() {
         this.items = [
             { label: 'Login', icon: 'fa-bar-chart', routerLink: ['/login'] },
