@@ -2,31 +2,135 @@ import { Component, OnInit }          from '@angular/core';
 import { Headers, Http }              from '@angular/http';
 import { Observable }                 from 'rxjs/Observable';
 import { Router }            from '@angular/router';
+import { Message, ConfirmationService } from 'primeng/primeng';
 
 import { UserService }                from '../user.service/user.service';
 import { User }                    from '../user.model/user';
 import { ActivePipe }   from './active.pipe';
 
-@Component({
-  selector: 'user-list',
-  templateUrl: 'app/user/user.list/user.list.component.html',
-  styleUrls: [ 'app/user/user.list/user.list.component.css' ],
+@Component( {
+    selector: 'user-list',
+    templateUrl: 'app/user/user.list/user.list.component.html',
+    styleUrls: ['app/user/user.list/user.list.component.css'],
 })
-export class UserListComponent implements OnInit{
-  userTitle = 'User List';
-  public users: User[] = [];
+export class UserListComponent implements OnInit {
+    userTitle = 'User List';
+    filterStr = 'Y';
+    dataSource: User[] = [];
+    users: User[] = [];
+    cols: any[];
+    user: User;
+    totalRecords: number;
+    selectedUser: User;
+    displayDialog: boolean;
+    newUser: boolean;
+    msgs: Message[] = [];
 
-  constructor(private userService: UserService, private router: Router) { }
+    constructor( private userService: UserService,
+        private router: Router,
+        private confirmationService: ConfirmationService
+    ) { }
 
-  ngOnInit(): void {
-    this.userService.getusers().then(
-      data => this.users = data
-    );
-  }
-  
-  gotoDetail(user: User): void {
-      let link = ['/detail', user.id];
-      this.router.navigate(link);
+    ngOnInit(): void {
+        this.userService.getusers().then( data => {
+            this.dataSource = data;
+            this.totalRecords = this.dataSource.length;
+            for ( let data of this.dataSource ) {
+                if ( data.activeType == 'Y' ) {
+                    this.users.push( data );
+                }
+            }
+        });
+        this.cols = [
+            { field: 'name', header: 'Name' },
+            { field: 'email', header: 'E-Mail' },
+            { field: 'age', header: 'Age' },
+            { field: 'dept.deptNameType', header: 'Dept' }
+            //            { field: 'info', header: 'Info' }
+        ];
+    }
+
+    gotoDetail( user: User ): void {
+        let link = ['/detail', user.id];
+        this.router.navigate( link );
+    }
+
+    onRowSelect( event: any ) {
+        this.newUser = false;
+        this.user = this.cloneUser( event.data );
+        this.displayDialog = true;
+        //        let link = ['/detail', event.id];
+        //        this.router.navigate( link );
+    }
+
+    cloneUser( u: User ): User {
+        let user = new User();
+        for ( let prop in u ) {
+            user[prop] = u[prop];
+        }
+        return user;
+    }
+
+    onSaveUser(): void {
+        if ( this.newUser ) {
+
+        }
+        else {
+            if ( this.user.email == '' ) {
+                this.showError( "E-Mail을" );
+            }
+            else if ( this.user.password == '' ) {
+                this.showError( "Password를" );
+            }
+            else if ( this.user.name == '' ) {
+                this.showError( "Name을" );
+            }
+            else if ( this.user.age == 0 ) {
+                this.showError( "Age를" );
+            }
+            else if ( this.user.dept.deptNameType == null ) {
+                this.showError( "DEPT를" );
+            }
+            else {
+                this.userService.update( this.user ).then(() => {
+                    this.user = null;
+                    this.displayDialog = false;
+                });
+            }
+        }
+    }
+
+    onDeleteUser(): void {
+        this.confirmationService.confirm( {
+            message: 'Are you sure that you want to delete user?',
+            accept: () => {
+                //Actual logic to perform a confirmation
+                this.userService.delete( this.user ).then(() => {
+                    this.users.splice( this.findSelectedCarIndex(), 1 );
+                    this.user = null;
+                    this.displayDialog = false;
+                });
+            }
+        });
+    }
+
+    showError( title: string ) {
+        this.msgs = [];
+        this.msgs.push( { severity: 'error', summary: title + ' 입력해주세요!', detail: 'Validation failed' });
+    }
+
+    hide() {
+        this.msgs = [];
+    }
+
+    findSelectedCarIndex(): number {
+        return this.users.indexOf( this.selectedUser );
+    }
+
+    showDialogToAdd() {
+        this.newUser = true;
+        this.user = new User();
+        this.displayDialog = true;
     }
 }
 

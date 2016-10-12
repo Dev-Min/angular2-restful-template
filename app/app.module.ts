@@ -4,7 +4,12 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, Http, Headers }    from '@angular/http';
-import { InputTextModule, ButtonModule, DataTableModule, PanelModule, TabMenuModule, PasswordModule, DropdownModule, GrowlModule, EditorModule, SharedModule } from 'primeng/primeng';
+import { 
+    InputTextModule, ButtonModule, DataTableModule,
+    PanelModule, TabMenuModule, PasswordModule,
+    DropdownModule, GrowlModule, EditorModule,
+    SharedModule, ConfirmDialogModule, DialogModule,
+    ConfirmationService } from 'primeng/primeng';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
@@ -31,7 +36,9 @@ import { NgEditorComponent } from './editor/editor.component';
         DropdownModule,
         GrowlModule,
         EditorModule,
-        SharedModule
+        SharedModule,
+        ConfirmDialogModule,
+        DialogModule
     ],
     declarations: [
         AppComponent,
@@ -43,7 +50,7 @@ import { NgEditorComponent } from './editor/editor.component';
         NgEditorComponent
     ],
     providers: [
-        UserService
+        UserService, ConfirmationService
     ],
     bootstrap: [AppComponent]
 })

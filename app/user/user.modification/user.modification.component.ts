@@ -5,7 +5,7 @@ import { Component, OnInit }          from '@angular/core';
 import { Headers, Http }              from '@angular/http';
 import { Location }               from '@angular/common';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { SelectItem, Message } from 'primeng/primeng';
+import { SelectItem, Message, ConfirmationService } from 'primeng/primeng';
 
 import { UserService } from '../user.service/user.service';
 import { User } from '../user.model/user';
@@ -29,7 +29,8 @@ export class UserModificationComponent implements OnInit {
         private service: UserService,
         private location: Location,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private confirmationService: ConfirmationService
     ) {
         this.depts = this.service.getDepts();
     }
@@ -73,7 +74,13 @@ export class UserModificationComponent implements OnInit {
     }
 
     onDeleteUser(): void {
-        this.service.delete( this.user ).then(() => this.goBack() );
+        this.confirmationService.confirm({
+            message: 'Are you sure that you want to delete user?',
+            accept: () => {
+                //Actual logic to perform a confirmation
+                this.service.delete( this.user ).then(() => this.goBack() );
+            }
+        });
     }
 
     goBack(): void {
