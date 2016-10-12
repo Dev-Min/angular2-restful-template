@@ -56,7 +56,6 @@ export class UserListComponent implements OnInit {
             { field: 'email', header: 'E-Mail' },
             { field: 'age', header: 'Age' },
             { field: 'dept.deptNameType', header: 'Dept' }
-            //            { field: 'info', header: 'Info' }
         ];
     }
 
