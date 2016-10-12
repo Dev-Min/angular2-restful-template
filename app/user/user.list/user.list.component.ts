@@ -36,7 +36,6 @@ export class UserListComponent implements OnInit {
 
     ngOnInit(): void {
         this.depts = this.userService.getDepts();
-        this.items.push( { label: this.user.dept.deptNameType, value: this.user.dept });
         for ( let dept of this.depts ) {
             this.items.push( { label: dept.deptNameType, value: { deptId: dept.deptId, deptNameType: dept.deptNameType } });
         }
