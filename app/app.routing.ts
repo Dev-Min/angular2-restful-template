@@ -2,8 +2,6 @@ import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UserListComponent } from './user/user.list/user.list.component';
-import { UserCreateComponent } from './user/user.create/user.create.component';
-import { UserModificationComponent } from './user/user.modification/user.modification.component';
 import { LoginComponent } from './login/login.component';
 import { NgEditorComponent } from './editor/editor.component';
 
@@ -20,14 +18,6 @@ const appRoutes: Routes = [
     {
         path: 'userList',
         component: UserListComponent
-    },
-    {
-        path: 'userCreate',
-        component: UserCreateComponent
-    },
-    {
-        path: 'detail/:id',
-        component: UserModificationComponent
     },
     {
         path: 'editor',
