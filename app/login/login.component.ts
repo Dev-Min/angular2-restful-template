@@ -3,7 +3,7 @@
 */
 import {Component} from '@angular/core';
 import { Router }            from '@angular/router';
-import { Message } from 'primeng/primeng';
+import { Message, ControlGroup } from 'primeng/primeng';
 
 @Component({
 selector: 'my-app',
@@ -18,7 +18,7 @@ export class LoginComponent {
     
     onLogin() {
         if(this.userId == null || this.userId == '') {
-            this.showError('아이디를');
+            this.showError('E-mail을');
         }
         else if(this.userPw == null || this.userPw == '') {
             this.showError('비밀번호를');
@@ -31,7 +31,7 @@ export class LoginComponent {
     
     showError(title: string) {
         this.msgs = [];
-        this.msgs.push({severity:'error', summary:title + ' 입력해주세요!', detail:'Validation failed'});
+        this.msgs.push({severity:'error', summary:title + ' 입력해주세요!'});
     }
 
     hide() {

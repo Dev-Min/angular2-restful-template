@@ -1,5 +1,30 @@
-<h1>My First PrimeNG App</h1>
-<input type="text" pInputText [(ngModel)]="userId"/>
-<input type="password" pPassword [(ngModel)]="userPw"/>
-<button pButton type="button" label="Login" (click)="onLogin()"></button>
+<h1>User Login</h1>
+
 <p-growl [value]="msgs"></p-growl>
+
+<div>
+	<div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+            E-mail :
+        </div>
+        <div class="ui-grid-col-6">
+            <input pInputText type="text" placeholder="Required" [(ngModel)]="userId"/>
+        </div>
+    </div>
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
+            Password :
+        </div>
+        <div class="ui-grid-col-6">
+            <input type="password" pInputText placeholder="Required" [(ngModel)]="userPw"/>
+        </div>
+    </div>
+    
+    <div class="ui-grid-row">
+        <div class="ui-grid-col-2"></div>
+        <div class="ui-grid-col-6">
+            <button pButton type="button" label="Login" (click)="onLogin()"></button>
+        </div>
+        <div class="ui-grid-col-4"></div>
+    </div>
+</div>
