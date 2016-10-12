@@ -9,16 +9,18 @@
 </div>
 -->
 
-<p-dataGrid [value]="users" [paginator]="true" [rows]="4">
+<p-dataTable [value]="users" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
 	<header>User List</header>
-    <template let-user>
-    	<div style="padding:3px" class="ui-g-12 ui-md-3" (click)="gotoDetail(user)">
-    		<p-panel header="{{user.email}}" [style]="{'text-align':'center'}">
-	    		<div>
-	    			<img src="app/resources/imgs/user.png">
-					<h4>{{user.name}}</h4>
-				</div>
-            </p-panel>
-    	</div>
-    </template>
-</p-dataGrid>
+	<p-column field="name" header="Name"></p-column>
+    <p-column field="email" header="Email"></p-column>
+    <p-column field="age" header="Age"></p-column>
+    <p-column field="dept.deptNameType" header="Dept"></p-column>
+    <p-column styleClass="col-button">
+    	<template pTemplate type="header">
+            <span>Info</span>
+        </template>
+    	<template let-user="rowData" pTemplate type="body">
+            <button type="button" pButton (click)="gotoDetail(user)" icon="fa-search"></button>
+        </template>
+    </p-column>
+</p-dataTable>

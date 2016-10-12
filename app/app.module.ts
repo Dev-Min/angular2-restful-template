@@ -4,7 +4,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, Http, Headers }    from '@angular/http';
-import { InputTextModule, ButtonModule, DataGridModule, PanelModule, TabMenuModule, PasswordModule, DropdownModule, GrowlModule, EditorModule, SharedModule } from 'primeng/primeng';
+import { InputTextModule, ButtonModule, DataTableModule, PanelModule, TabMenuModule, PasswordModule, DropdownModule, GrowlModule, EditorModule, SharedModule } from 'primeng/primeng';
 
 import { AppComponent }         from './app.component';
 import { routing }              from './app.routing';
@@ -24,7 +24,7 @@ import { NgEditorComponent } from './editor/editor.component';
         routing,
         InputTextModule,
         ButtonModule,
-        DataGridModule,
+        DataTableModule,
         PanelModule,
         TabMenuModule,
         PasswordModule,
