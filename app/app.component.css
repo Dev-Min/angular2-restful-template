@@ -27,8 +27,8 @@ nav a.active {
   color: #039be5;
 }
 
-#sidebar{width:300px; float:left;}
-#content{width:700px; float:left;}
+#sidebar{width:17%; float:left;}
+#content{width:83%; float:left;}
 
 
 /*
