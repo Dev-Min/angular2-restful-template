@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserListComponent } from './user/user.list/user.list.component';
 import { LoginComponent } from './login/login.component';
 import { NgEditorComponent } from './editor/editor.component';
+import { FileUploadComponent } from './file/file.upload.component';
 
 const appRoutes: Routes = [
     {
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
         path: 'editor',
         component: NgEditorComponent
     },
+    {
+        path: 'upload',
+        component: FileUploadComponent
+    }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot( appRoutes );
