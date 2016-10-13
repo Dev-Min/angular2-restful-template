@@ -6,7 +6,7 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule, Http, Headers }    from '@angular/http';
 import { 
     InputTextModule, ButtonModule, DataTableModule,
-    PanelModule, TabMenuModule, PasswordModule,
+    PanelModule, MenuModule, PasswordModule,
     DropdownModule, GrowlModule, EditorModule,
     SharedModule, ConfirmDialogModule, DialogModule,
     ConfirmationService } from 'primeng/primeng';
@@ -29,7 +29,7 @@ import { NgEditorComponent } from './editor/editor.component';
         ButtonModule,
         DataTableModule,
         PanelModule,
-        TabMenuModule,
+        MenuModule,
         PasswordModule,
         DropdownModule,
         GrowlModule,

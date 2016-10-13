@@ -7,5 +7,9 @@
 	<a routerLink="/userModi" routerLinkActive="active">User Modification</a>
 </div>
  -->
-<p-tabMenu [model]="items"></p-tabMenu>
-<router-outlet></router-outlet>
+ <div id="sidebar">
+	<p-menu [model]="items"></p-menu>
+</div>
+<div id="content">
+	<router-outlet></router-outlet>
+</div>

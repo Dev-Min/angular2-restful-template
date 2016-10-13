@@ -27,6 +27,9 @@ nav a.active {
   color: #039be5;
 }
 
+#sidebar{width:300px; float:left;}
+#content{width:700px; float:left;}
+
 
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
